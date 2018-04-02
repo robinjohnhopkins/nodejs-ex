@@ -34,8 +34,8 @@
     "npm": "*"
   },
   "scripts": {
-    "s": "gulp serve",
-    "start": "node server.js",
+    "start": "gulp serve",
+    "startx": "node server.js",
     "test": "IP=0.0.0.0 PORT=3030 mocha --timeout 5000 tests/*_test.js"
   },
   "repository": {
