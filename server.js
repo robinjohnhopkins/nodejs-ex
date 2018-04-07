@@ -8,7 +8,8 @@ Object.assign=require('object-assign')
 app.engine('html', require('ejs').renderFile);
 app.use(morgan('combined'))
 
-console.log('process.env', process.env);    
+console.log('process.env');    
+console.log(process.env);    
 
 var port = process.env.PORT || process.env.OPENSHIFT_NODEJS_PORT || 8080,
     ip   = process.env.IP   || process.env.OPENSHIFT_NODEJS_IP || '0.0.0.0',
@@ -16,7 +17,9 @@ var port = process.env.PORT || process.env.OPENSHIFT_NODEJS_PORT || 8080,
     mongoURLLabel = "";
     
 console.log('starting up');    
-    
+console.log(mongoURL);
+
+
 if (mongoURL == null && process.env.DATABASE_SERVICE_NAME) {
   var mongoServiceName = process.env.DATABASE_SERVICE_NAME.toUpperCase(),
       mongoHost = process.env[mongoServiceName + '_SERVICE_HOST'],
@@ -24,6 +27,8 @@ if (mongoURL == null && process.env.DATABASE_SERVICE_NAME) {
       mongoDatabase = process.env[mongoServiceName + '_DATABASE'],
       mongoPassword = process.env[mongoServiceName + '_PASSWORD']
       mongoUser = process.env[mongoServiceName + '_USER'];
+      console.log(mongoServiceName, mongoHost, mongoPort, mongoDatabase, 
+        mongoPassword, mongoUser );
 
   if (mongoHost && mongoPort && mongoDatabase) {
     mongoURLLabel = mongoURL = 'mongodb://';
@@ -43,6 +48,7 @@ var initDb = function(callback) {
   if (mongoURL == null) {
     console.log('mongoURL null'); 
     return;
+    //mongoURL = "mongodb://10.128.36.106:"
   }
   console.log('connecting to mongo ' + mongoURL); 
 
