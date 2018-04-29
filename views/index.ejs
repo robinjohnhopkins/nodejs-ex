@@ -223,6 +223,11 @@ pre {
                   <li><a href="/login">Login   </a> </li>
                   <li><a href="#">Sign Up </a>  </li>
               </ul>
+              <% if (!user) { %>
+                <p>Welcome! Please <a href="/login">log in</a>.</p>
+              <% } else { %>
+                <p>Hello, <%= user.username %>. View your <a href="/profile">profile</a>.</p>
+              <% } %>
          </div>
 
         <div class="row">
