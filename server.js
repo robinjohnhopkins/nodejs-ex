@@ -14,7 +14,6 @@ var clientSecret = process.env.FACEBOOK_SECRET;
 console.log('clientId=' + clientId + ' clientSecret=' + clientSecret);    
 //var clientId = '1492519200858678';
 //var clientSecret = '4904b011ab92bb1c4340f78b3a33aee7';
-//var callback='http://localhost:3000/login/facebook/return';
 var callback='https://nodejs-mongo-persistent-rjhnode.193b.starter-ca-central-1.openshiftapps.com/login/facebook/return';
 
 // Configure the Facebook strategy for use by Passport.
@@ -176,6 +175,11 @@ app.get('/login/facebook/return',
     console.log(res);
     res.redirect('/');
   });
+  
+app.get('/logout', function(req, res) {
+    req.logout(); 
+    res.redirect('/');
+});
 
 app.get('/profile',
   require('connect-ensure-login').ensureLoggedIn(),
