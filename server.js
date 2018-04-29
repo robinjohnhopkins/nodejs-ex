@@ -8,8 +8,10 @@ Object.assign=require('object-assign')
 var passport = require('passport');
 var Strategy = require('passport-facebook').Strategy;
 
-var clientId = process.env.CLIENT_ID | '1492519200858678';
-var clientSecret = process.env.CLIENT_SECRET | '4904b011ab92bb1c4340f78b3a33aee7';
+//var clientId = process.env.CLIENT_ID | '1492519200858678';
+//var clientSecret = process.env.CLIENT_SECRET | '4904b011ab92bb1c4340f78b3a33aee7';
+var clientId = '1492519200858678';
+var clientSecret = '4904b011ab92bb1c4340f78b3a33aee7';
 //var callback='http://localhost:3000/login/facebook/return';
 var callback='https://nodejs-mongo-persistent-rjhnode.193b.starter-ca-central-1.openshiftapps.com/login/facebook/return';
 
