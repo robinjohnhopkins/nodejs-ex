@@ -97,7 +97,7 @@ app.get('/', function (req, res) {
   }
 });
 
-app.get('/login', async (req, res) => {
+app.get('/login', function (req, res) {
   try {
     res.render('login');
   } catch (err) {
