@@ -11,6 +11,7 @@ var Strategy = require('passport-facebook').Strategy;
 var APP_VERSION = '1.0.0-1';
 var clientId = process.env.FACEBOOK_ID;
 var clientSecret = process.env.FACEBOOK_SECRET;
+console.log('clientId=' + clientId + ' clientSecret=' + clientSecret);    
 //var clientId = '1492519200858678';
 //var clientSecret = '4904b011ab92bb1c4340f78b3a33aee7';
 //var callback='http://localhost:3000/login/facebook/return';
@@ -171,6 +172,8 @@ app.get('/login/facebook',
 app.get('/login/facebook/return', 
   passport.authenticate('facebook', { failureRedirect: '/login' }),
   function(req, res) {
+    console.log('/login/facebook/return');    
+    console.log(res);
     res.redirect('/');
   });
 
