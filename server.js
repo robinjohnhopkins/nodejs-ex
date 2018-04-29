@@ -2,11 +2,16 @@
 var express = require('express'),
     app     = express(),
     morgan  = require('morgan');
-    
+const path = require('path')
+
 Object.assign=require('object-assign')
 
 app.engine('html', require('ejs').renderFile);
 app.use(morgan('combined'))
+
+app.set('views', path.join(__dirname, 'views'))
+    .set('view engine', 'ejs')
+
 
 console.log('process.env');    
 console.log(process.env);    
@@ -89,6 +94,15 @@ app.get('/', function (req, res) {
     });
   } else {
     res.render('index.html', { pageCountMessage : null});
+  }
+});
+
+app.get('/login', async (req, res) => {
+  try {
+    res.render('login');
+  } catch (err) {
+    console.error(err);
+    res.send("Error login " + err);
   }
 });
 
