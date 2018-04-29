@@ -217,11 +217,13 @@ pre {
 <section class='container'>
           <hgroup>
             <h1>Hi guys. Welcome to your Node.js application on OpenShift ejs</h1>
+            <p>App version: <%= appVersion %></p>
           </hgroup>
           <div>
             <ul style="color:white; float: right;" class="nav navbar-nav">
                   <li><a href="/login">Login   </a> </li>
                   <li><a href="#">Sign Up </a>  </li>
+                  appVersion
               </ul>
               <% if (!user) { %>
                 <p>Welcome! Please <a href="/login">log in</a>.</p>
