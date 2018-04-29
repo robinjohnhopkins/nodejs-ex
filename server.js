@@ -147,10 +147,10 @@ app.get('/', function (req, res) {
       if (err) {
         console.log('Error running count. Message:\n'+err);
       }
-      res.render('index', { pageCountMessage : count, dbInfo: dbDetails });
+      res.render('index', { pageCountMessage : count, dbInfo: dbDetails, user: req.user  });
     });
   } else {
-    res.render('index', { pageCountMessage : null});
+    res.render('index', { pageCountMessage : null, user: req.user });
   }
 });
 
