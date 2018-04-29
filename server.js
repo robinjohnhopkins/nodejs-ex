@@ -88,12 +88,12 @@ app.get('/', function (req, res) {
     col.insert({ip: req.ip, date: Date.now()});
     col.count(function(err, count){
       if (err) {
-        console.log('Error running count(). Message:\n'+err);
+        console.log('Error running count. Message:\n'+err);
       }
-      res.render('index', { pageCountMessage : count, dbInfo: dbDetails });
+      res.render('index.html', { pageCountMessage : count, dbInfo: dbDetails });
     });
   } else {
-    res.render('index', { pageCountMessage : null});
+    res.render('index.html', { pageCountMessage : null});
   }
 });
 
