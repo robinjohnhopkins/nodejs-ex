@@ -181,6 +181,14 @@ app.get('/dashboard', function (req, res) {
     res.send("Error dashboard " + err);
   }
 });
+app.get('/report', function (req, res) {
+  try {
+    res.render('report');
+  } catch (err) {
+    console.error(err);
+    res.send("Error report " + err);
+  }
+});
 app.get('/login/facebook',
   passport.authenticate('facebook'));
 
