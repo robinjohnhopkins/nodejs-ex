@@ -37,3 +37,5 @@ to access mongoldb from terminal in open shift
 mongo -u admin -p $MONGODB_ADMIN_PASSWORD admin
 
 shift alt f beautify vs code
+
+Info - good js demo maps and charts found in http://creativeit.github.io/material-dashboard-lite
