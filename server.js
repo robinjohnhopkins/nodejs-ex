@@ -173,6 +173,14 @@ app.get('/map', function (req, res) {
     res.send("Error map " + err);
   }
 });
+app.get('/maps', function (req, res) {
+  try {
+    res.render('maps');
+  } catch (err) {
+    console.error(err);
+    res.send("Error maps " + err);
+  }
+});
 app.get('/dashboard', function (req, res) {
   try {
     res.render('dashboard');
