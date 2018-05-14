@@ -106,6 +106,25 @@ var initDb = function (callback) {
   });
 };
 
+var mongoose = require('mongoose');
+//mongoose.connect('mongodb://localhost:27017/mongoose4demo');
+if (config.mongoURL != null) {
+  console.log('mongoURL !null mongoose');
+  mongoose.connect(config.mongoURL);
+  var db = mongoose.connection;
+  mongoose.Promise = global.Promise;
+    
+  db.on('error', console.error.bind(console, 'connection error:'));
+  db.once('open', function () {
+    console.log('mongoose Connected to MongoDB');
+    
+    // APIs
+    var itemApi = require('./server/item/item.api.js')(app);
+    
+    var searchApi = require('./server/search/search.api.js')(app);
+  });
+}
+  
 // Use application-level middleware for common functionality, including
 // logging, parsing, and session handling.
 app.use(require('cookie-parser')());
