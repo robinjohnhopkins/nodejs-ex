@@ -37,8 +37,6 @@ module.exports = function (app) {
     });
   });
 
-
-
   // create sbe post
   app.get('/api/createitem', function (req, res) {
     var name = 'sweet' + makeid(); 
