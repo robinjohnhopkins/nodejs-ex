@@ -39,3 +39,13 @@ mongo -u admin -p $MONGODB_ADMIN_PASSWORD admin
 shift alt f beautify vs code
 
 Info - good js demo maps and charts found in http://creativeit.github.io/material-dashboard-lite
+
+#I ran following to make angularjs a dependency
+npm i @angular/cli
+#after which the angular cli is here
+./node_modules/.bin/ng -v
+
+#added a script to package.json to run the ng build command which compiles angular into dist folder
+# after which we put in a link to the built single page app in the node server
+npm run ngbuild
+

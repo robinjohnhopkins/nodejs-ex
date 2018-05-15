@@ -63,12 +63,12 @@ app.use('/js', express.static(__dirname + '/node_modules/jquery/dist'));
 app.use('/js', express.static(__dirname + '/node_modules/popper.js/dist'));
 app.use('/', express.static(__dirname + '/node_modules/feather-icons/dist'));
 app.use('/', express.static(__dirname + '/node_modules/chart.js/dist'));
+app.use('/', express.static(__dirname + '/dist/angapp'));
 
 app.use('/', express.static(__dirname + '/public'));
 
 app.set('views', path.join(__dirname, 'views'))
   .set('view engine', 'ejs')
-
 
 console.log('process.env');
 console.log(process.env);
@@ -142,7 +142,7 @@ app.use(require('express-session')({
 app.use(passport.initialize());
 app.use(passport.session());
 
-app.get('/', function (req, res) {
+app.get('/openshift', function (req, res) {
   // try to initialize the db on every request if it's not already
   // initialized.
   if (!db) {
