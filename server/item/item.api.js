@@ -11,7 +11,7 @@ function makeid() {
 module.exports = function (app) {
 
   var Item = require('../models/item.model');
-
+  
   app.get('/api/items', function (req, res) {
     // {estvalue: { $gte: 100}}
     Item.find({}, function (err, docs) {

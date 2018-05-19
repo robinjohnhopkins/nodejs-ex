@@ -1,4 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+
 import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -7,7 +10,9 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { CustomerComponent } from './customer/customer.component';
 import { AdminModule } from './admin/admin.module';
 import { AppCustomMaterialModule } from './AppCustomMaterialModule';
-
+import { DataService } from './services/data.service';
+import { HttpModule } from '@angular/http';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -19,9 +24,13 @@ import { AppCustomMaterialModule } from './AppCustomMaterialModule';
     BrowserModule,
     AdminModule,
     AppRoutingModule,
-    AppCustomMaterialModule
+    AppCustomMaterialModule,
+    ReactiveFormsModule,
+    HttpModule,
   ],
-  providers: [],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
+  providers: [    DataService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

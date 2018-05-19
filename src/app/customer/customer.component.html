@@ -1,192 +1,115 @@
-<p>
-  customer works!
-</p>
-<div class="demo-menu">
-  <div class="demo-menu-section">
-    <p>You clicked on: {{ selected }}</p>
-
-    <mat-toolbar>
-      <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Open basic menu">
-        <mat-icon>more_vert</mat-icon>
-      </button>
-    </mat-toolbar>
-
-    <mat-menu #menu="matMenu">
-      <button mat-menu-item *ngFor="let item of items" (click)="select(item.text)" [disabled]="item.disabled">
-        {{ item.text }}
-      </button>
-    </mat-menu>
-  </div>
-  <div class="demo-menu-section">
-    <p>Menu with divider</p>
-
-    <mat-toolbar>
-      <button mat-icon-button [matMenuTriggerFor]="divider" aria-label="Open basic menu">
-        <mat-icon>more_vert</mat-icon>
-      </button>
-    </mat-toolbar>
-
-    <mat-menu #divider="matMenu">
-      <ng-container *ngFor="let item of items; last as last">
-        <button mat-menu-item [disabled]="item.disabled">
-          {{ item.text }}
-        </button>
-        <mat-divider *ngIf="!last"></mat-divider>
-      </ng-container>
-    </mat-menu>
-  </div>
-  <div class="demo-menu-section">
-    <p>Nested menu</p>
-
-    <mat-toolbar>
-      <button mat-icon-button [matMenuTriggerFor]="animals">
-        <mat-icon>more_vert</mat-icon>
-      </button>
-    </mat-toolbar>
-
-    <mat-menu #animals="matMenu">
-      <button mat-menu-item [matMenuTriggerFor]="vertebrates">Vertebrates</button>
-      <button mat-menu-item [matMenuTriggerFor]="invertebrates">Invertebrates</button>
-    </mat-menu>
-
-    <mat-menu #vertebrates="matMenu">
-      <button mat-menu-item [matMenuTriggerFor]="fish">Fishes</button>
-      <button mat-menu-item [matMenuTriggerFor]="amphibians">Amphibians</button>
-      <button mat-menu-item [matMenuTriggerFor]="reptiles">Reptiles</button>
-      <button mat-menu-item>Birds</button>
-      <button mat-menu-item>Mammals</button>
-    </mat-menu>
-
-    <mat-menu #invertebrates="matMenu">
-      <button mat-menu-item>Insects</button>
-      <button mat-menu-item>Molluscs</button>
-      <button mat-menu-item>Crustaceans</button>
-      <button mat-menu-item>Corals</button>
-      <button mat-menu-item>Arachnids</button>
-      <button mat-menu-item>Velvet worms</button>
-      <button mat-menu-item>Horseshoe crabs</button>
-    </mat-menu>
-
-    <mat-menu #fish="matMenu">
-      <button mat-menu-item>Baikal oilfish</button>
-      <button mat-menu-item>Bala shark</button>
-      <button mat-menu-item>Ballan wrasse</button>
-      <button mat-menu-item>Bamboo shark</button>
-      <button mat-menu-item>Banded killifish</button>
-    </mat-menu>
-
-    <mat-menu #amphibians="matMenu">
-      <button mat-menu-item>Sonoran desert toad</button>
-      <button mat-menu-item>Western toad</button>
-      <button mat-menu-item>Arroyo toad</button>
-      <button mat-menu-item>Yosemite toad</button>
-    </mat-menu>
-
-    <mat-menu #reptiles="matMenu">
-      <button mat-menu-item>Banded Day Gecko</button>
-      <button mat-menu-item>Banded Gila Monster</button>
-      <button mat-menu-item>Black Tree Monitor</button>
-      <button mat-menu-item>Blue Spiny Lizard</button>
-    </mat-menu>
-  </div>
-  <div class="demo-menu-section">
-    <p>Clicking these will navigate:</p>
-    <mat-toolbar>
-      <button mat-icon-button [matMenuTriggerFor]="anchorMenu" aria-label="Open anchor menu">
-        <mat-icon>more_vert</mat-icon>
-      </button>
-    </mat-toolbar>
-
-    <mat-menu #anchorMenu="matMenu">
-      <a mat-menu-item *ngFor="let item of items" href="http://www.google.com" [disabled]="item.disabled">
-        {{ item.text }}
-      </a>
-    </mat-menu>
-  </div>
-  <div class="demo-menu-section">
-    <p>
-      Position x: before
-    </p>
-    <mat-toolbar class="demo-end-icon">
-      <button mat-icon-button [matMenuTriggerFor]="posXMenu" aria-label="Open x-positioned menu">
-        <mat-icon>more_vert</mat-icon>
-      </button>
-    </mat-toolbar>
-
-    <mat-menu xPosition="before" #posXMenu="matMenu">
-      <button mat-menu-item *ngFor="let item of iconItems" [disabled]="item.disabled">
-        <mat-icon>{{ item.icon }}</mat-icon>
-        {{ item.text }}
-      </button>
-    </mat-menu>
-  </div>
-  <div class="demo-menu-section">
-    <p>
-      Position y: above
-    </p>
-    <mat-toolbar>
-      <button mat-icon-button [matMenuTriggerFor]="posYMenu" aria-label="Open y-positioned menu">
-        <mat-icon>more_vert</mat-icon>
-      </button>
-    </mat-toolbar>
-
-    <mat-menu yPosition="above" #posYMenu="matMenu">
-      <button mat-menu-item *ngFor="let item of items" [disabled]="item.disabled">
-        {{ item.text }}
-      </button>
-    </mat-menu>
+<div class="card" *ngIf="isLoading">
+  <h4 class="card-header">Loading...</h4>
+  <div class="card-block text-xs-center">
+    <i class="fa fa-circle-o-notch fa-spin fa-3x"></i>
   </div>
 </div>
 
-<div class="demo-menu">
-  <div class="demo-menu-section">
-    <p>overlapTrigger: false</p>
-
-    <mat-toolbar>
-      <button mat-icon-button [mat-menu-trigger-for]="menuOverlay">
-        <mat-icon>more_vert</mat-icon>
-      </button>
-    </mat-toolbar>
-
-    <mat-menu [overlapTrigger]="false" #menuOverlay="matMenu">
-      <button mat-menu-item *ngFor="let item of items" [disabled]="item.disabled">
-        {{ item.text }}
-      </button>
-    </mat-menu>
+<div class="card" *ngIf="!isLoading && !isEditing && !isAddNew">
+  <div class="card-header">
+    <div class="pull-left">
+      <h4>Stored Items ({{items.length}} with total est. value {{estValueSum | currency:'USD':true}})</h4>
+    </div>
+    <div class="pull-right">
+        <button class="btn btn-sm btn-primary" (click)="enableAddNew()"><i class="fa fa-plus-square-o"></i> Add New</button>
+    </div>    
   </div>
-  <div class="demo-menu-section">
-    <p>
-      Position x: before, overlapTrigger: false
-    </p>
-    <mat-toolbar class="demo-end-icon">
-      <button mat-icon-button [mat-menu-trigger-for]="posXMenuOverlay">
-        <mat-icon>more_vert</mat-icon>
+  
+  <div class="card-block">
+    <table class="table table-bordered table-striped">
+      <thead class="thead-default">
+        <tr>
+          <th>Name</th>
+          <th>Description</th>
+          <th>Category</th>
+          <th>Est. Value</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody *ngIf="items.length === 0">
+        <tr>
+          <td colspan="5">There are no storage items in the DB. Add a new item below.</td>
+        </tr>
+      </tbody>
+      <tbody *ngIf="!isEditing">
+        <tr *ngFor="let item of items">
+          <td>
+              {{item.name}}
+          </td>
+          <td>{{item.description}}</td>
+          <td>{{item.category}}</td>
+          <td>{{item.estvalue | currency:'USD':true}}</td>
+          <td>
+            <button class="btn btn-sm btn-warning" (click)="enableEditing(item)"><i class="fa fa-pencil"></i> Edit</button>
+            <button class="btn btn-sm btn-danger" (click)="deleteItem(item)"><i class="fa fa-trash"></i> Delete</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <div [hidden]="!infoMsg.body" class="alert alert-{{infoMsg.type}} alert-dismissible" role="alert">
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
       </button>
-    </mat-toolbar>
-
-    <mat-menu xPosition="before" [overlapTrigger]="false" #posXMenuOverlay="matMenu">
-      <button mat-menu-item *ngFor="let item of iconItems" [disabled]="item.disabled">
-        <mat-icon>{{ item.icon }}</mat-icon>
-        {{ item.text }}
-      </button>
-    </mat-menu>
-  </div>
-  <div class="demo-menu-section">
-    <p>
-      Position y: above, overlapTrigger: false
-    </p>
-    <mat-toolbar>
-      <button mat-icon-button [mat-menu-trigger-for]="posYMenuOverlay">
-        <mat-icon>more_vert</mat-icon>
-      </button>
-    </mat-toolbar>
-
-    <mat-menu yPosition="above" [overlapTrigger]="false" #posYMenuOverlay="matMenu">
-      <button mat-menu-item *ngFor="let item of items" [disabled]="item.disabled">
-        {{ item.text }}
-      </button>
-    </mat-menu>
+      <strong>Message:</strong> {{infoMsg.body}}
+    </div>
   </div>
 </div>
 
-<div style="height: 500px">This div is for testing scrolled menus.</div>
+<!-- Add New Item -->
+<div class="card" *ngIf="!isEditing && isAddNew">
+  <h4 class="card-header">Add new item to storage...</h4>
+  <form [formGroup]="addItemForm" (ngSubmit)="addItem()" style="padding: 10px;">
+    <div class="form-group col-3">
+      <label for="addItemName">Item Name</label>
+      <input class="form-control" type="text" name="name" formControlName="name" placeholder="Name">
+    </div>
+    <div class="form-group col-6">
+      <label for="addItemDescription">Description</label>
+      <input class="form-control" type="text" name="description" formControlName="description" placeholder="Description">
+    </div>
+    <div class="form-group col-3">
+      <label for="addItemCategory">Category</label>
+      <input class="form-control" type="text" name="category" formControlName="category" placeholder="Category">
+    </div>
+    <div class="form-group col-3">
+      <label for="addItemEstValue">Estimate Value</label>
+      <input class="form-control" type="number" name="estvalue" formControlName="estvalue" placeholder="Est. Value" step="1" min="0">
+      <small id="addItemEstValueTip" class="form-text text-muted">Round to the nearest whole number.</small>
+    </div>
+    
+    <div style="padding-left: 20px;">
+      <button class="btn btn-primary" type="submit" [disabled]="!addItemForm.valid"><i class="fa fa-floppy-o"></i> Add</button>
+      <button class="btn btn-warning" (click)="cancelAddNew()"><i class="fa fa-times"></i> Cancel</button>
+    </div>
+  </form>
+</div>
+
+<!-- Edit Existing Item -->
+<div class="card" *ngIf="isEditing && !isAddNew">
+  <h4 class="card-header">Edit Item</h4>
+  <form [formGroup]="editItemForm" (ngSubmit)="editItem(item)" style="padding: 10px;">
+  <div class="form-group col-3">
+      <label for="editItemName">Item Name</label>
+      <input type="text" class="form-control" id="editItemName" [(ngModel)]="item.name" formControlName="name" placeholder="Item Name">
+    </div>
+     <div class="form-group col-6">
+      <label for="editItemDescription">Description</label>
+      <input type="text" class="form-control" id="editItemDescription" [(ngModel)]="item.description" formControlName="description" placeholder="Description">
+    </div>
+    <div class="form-group col-3">
+      <label for="editItemCategory">Category</label>
+      <input type="text" class="form-control" id="editItemCategory" [(ngModel)]="item.category" formControlName="category" placeholder="Category">
+    </div>
+    <div class="form-group col-3">
+      <label for="editItemEstValue">Estimate Value</label>
+      <input class="form-control" type="number" name="editItemEstValue" [(ngModel)]="item.estvalue" formControlName="estvalue" 
+        placeholder="Est. Value" step="1" min="0" aria-describedby="addItemEstValueTip">
+      <small id="editItemEstValueTip" class="form-text text-muted">Round to the nearest whole number.</small>
+    </div>
+    
+    <div style="padding-left: 20px;">
+      <button class="btn btn-primary" type="submit" [disabled]="!editItemForm.valid"><i class="fa fa-floppy-o"></i> Save</button>
+      <button class="btn btn-warning" (click)="cancelEditing()"><i class="fa fa-times"></i> Cancel</button>
+    </div>   
+  </form>
+</div>
