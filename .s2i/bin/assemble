@@ -9,8 +9,11 @@ if [ $rc -eq 0 ]; then
     echo running .s2i/bin/bash =========================
     pwd
     ls
-    echo explicitly:npm run ngbuild
-    npm run ngbuild
+    #echo explicitly:npm run ngbuild
+    #npm run ngbuild
+    echo explicitly:./node_modules/.bin/ng build
+    ls -al ./node_modules/.bin/ng 
+    ./node_modules/.bin/ng build
     echo done ========================
     ls dist
 else
