@@ -6,6 +6,8 @@ import { AppComponent } from './app.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { CustomerComponent } from './customer/customer.component';
 import { AdminModule } from './admin/admin.module';
+import { AppCustomMaterialModule } from './AppCustomMaterialModule';
+
 
 @NgModule({
   declarations: [
@@ -16,7 +18,8 @@ import { AdminModule } from './admin/admin.module';
   imports: [
     BrowserModule,
     AdminModule,
-    AppRoutingModule
+    AppRoutingModule,
+    AppCustomMaterialModule
   ],
   providers: [],
   bootstrap: [AppComponent]
