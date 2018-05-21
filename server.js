@@ -3,6 +3,7 @@ var express = require('express'),
   app = express(),
   morgan = require('morgan');
 const path = require('path')
+var bodyParser = require('body-parser');
 
 Object.assign = require('object-assign')
 var passport = require('passport');
@@ -57,6 +58,9 @@ passport.deserializeUser(function (obj, cb) {
 });
 
 app.engine('html', require('ejs').renderFile);
+
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
 app.use(morgan('combined'))
 app.use('/', express.static(__dirname + '/node_modules/bootstrap/dist/'));
 app.use('/js', express.static(__dirname + '/node_modules/jquery/dist'));
@@ -223,6 +227,19 @@ app.get('/login/facebook/return',
   passport.authenticate('facebook', {
     failureRedirect: '/login'
   }),
+
+  // This is what comes back from facebook
+  //   user: 
+  //   { id: '1660546474037158',
+  //     username: undefined,
+  //     displayName: 'Robin Hopkins',
+  //     name: [Object],
+  //     gender: undefined,
+  //     profileUrl: undefined,
+  //     provider: 'facebook',
+  //     _raw: '{"name":"Robin Hopkins","id":"1660546474037158"}',
+  //     _json: [Object] },
+  //  authInfo: {} },
   function (req, res) {
     console.log('/login/facebook/return');
     console.log(res);
@@ -256,6 +273,7 @@ app.get('/pagecount', function (req, res) {
     res.send('{ pageCount: -1 }');
   }
 });
+
 
 // error handling
 app.use(function (err, req, res, next) {

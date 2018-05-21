@@ -37,6 +37,7 @@ module.exports = function (app) {
     });
   });
 
+
   // create sbe post
   app.get('/api/createitem', function (req, res) {
     var name = 'sweet' + makeid(); 
@@ -81,7 +82,7 @@ module.exports = function (app) {
     Item.aggregate(
       { $group: {
           _id: null,
-          total: { $sum: { $add: ["$estvalue"]} }
+          total: { $sum: { $add: ["$estvalue"]} }, cursor:{}
         }        
       },
       function (err, result) {
